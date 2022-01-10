@@ -20,12 +20,23 @@ namespace Homework10.TelegramBot.Ui
     /// </summary>
     public partial class MainWindow : Window
     {
+        BlondeDreamBot blondeDreamBot;
+        CancellationTokenSource botCancellation = new CancellationTokenSource();
         public MainWindow()
         {
             InitializeComponent();
 
+           
+            var token = System.IO.File.ReadAllText("token.txt");
 
-          
+            blondeDreamBot = new BlondeDreamBot(token);
+            Task.Run(async () => await blondeDreamBot.Execute(botCancellation.Token));
+
+
+            //botCancellation.Cancel();
+
+
+
         }
 
 
