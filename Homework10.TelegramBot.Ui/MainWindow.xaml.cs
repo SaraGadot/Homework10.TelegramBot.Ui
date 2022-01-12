@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Homework10.TelegramBot.Ui.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,8 +40,17 @@ namespace Homework10.TelegramBot.Ui
 
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Users_List.ItemsSource = blondeDreamBot.Users;
+        }
 
-    
+        private void Send_Button_Click(object sender, RoutedEventArgs e)
+        {
+            var user = Users_List.SelectedItem as User;
+            Task.Run(async () => await blondeDreamBot.Send(user.ChatId, Message_TextBox.Text));
+
+        }
     }
 }
 //Что нужно сделать

@@ -15,6 +15,7 @@ internal class BlondeDreamBot
 {
     TelegramBotClient botClient;
     FileStorage fileStorage = new FileStorage();
+    public readonly List<Models.User> Users = new List<Models.User>();
 
     public BlondeDreamBot(string token)
     {
@@ -66,6 +67,13 @@ internal class BlondeDreamBot
 
         if (update.Message!.Type == MessageType.Text && update.Message.Text == "/start")
         {
+            var chat = update.Message.Chat;
+            Users.Add(new Models.User
+            {
+                ChatId = chat.Id,
+                Name = chat.Username ?? chat.Title ?? $"{chat.FirstName} {chat.LastName}"
+            }
+            );
             await botClient.SendTextMessageAsync(
                 chatId: update.Message.Chat.Id,
                 text: "Отправляйте свои файлы и скачивайте уже отправленные файлы через команду /browse",
@@ -130,7 +138,7 @@ internal class BlondeDreamBot
         Console.WriteLine($"Received a '{messageText}' message in chat {chatId}.");
 
         // Echo received message text
-        Message sentMessage = await botClient.SendTextMessageAsync(
+        await botClient.SendTextMessageAsync(
             chatId: chatId,
             text: "❤︎ Вы сказали ❤︎:\n" + messageText,
             cancellationToken: cancellationToken);
@@ -149,5 +157,12 @@ internal class BlondeDreamBot
         return Task.CompletedTask;
     }
 
+    public async Task Send(ChatId chatId, string message)
+    {
+        await botClient.SendTextMessageAsync(
+                    chatId: chatId,
+                    text: message
+                    );
+    }
 }
 
