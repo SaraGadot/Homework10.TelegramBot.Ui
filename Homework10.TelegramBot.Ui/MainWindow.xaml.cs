@@ -45,10 +45,11 @@ namespace Homework10.TelegramBot.Ui
             Users_List.ItemsSource = blondeDreamBot.Users;
         }
 
-        private void Send_Button_Click(object sender, RoutedEventArgs e)
+        private async void Send_Button_Click(object sender, RoutedEventArgs e)
         {
             var user = Users_List.SelectedItem as User;
-            Task.Run(async () => await blondeDreamBot.Send(user.ChatId, Message_TextBox.Text));
+            await blondeDreamBot.Send(user.ChatId, Message_TextBox.Text);
+            Dispatcher.Invoke(() => Message_TextBox.Text = null);
 
         }
     }
