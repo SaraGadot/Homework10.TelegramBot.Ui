@@ -30,7 +30,9 @@ namespace Homework10.TelegramBot.Ui
            
             var token = System.IO.File.ReadAllText("token.txt");
 
-            blondeDreamBot = new BlondeDreamBot(token);
+            var userStorage = new UserStorage(this);
+            blondeDreamBot = new BlondeDreamBot(token, userStorage);
+            Users_List.ItemsSource = userStorage.Users;
             Task.Run(async () => await blondeDreamBot.Execute(botCancellation.Token));
 
 
@@ -40,11 +42,7 @@ namespace Homework10.TelegramBot.Ui
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Users_List.ItemsSource = blondeDreamBot.Users;
-        }
-
+        
         private async void Send_Button_Click(object sender, RoutedEventArgs e)
         {
             var user = Users_List.SelectedItem as User;

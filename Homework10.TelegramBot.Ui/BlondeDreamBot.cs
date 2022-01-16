@@ -15,11 +15,12 @@ internal class BlondeDreamBot
 {
     TelegramBotClient botClient;
     FileStorage fileStorage = new FileStorage();
-    public readonly List<Models.User> Users = new List<Models.User>();
+    public readonly UserStorage UserStorage;
 
-    public BlondeDreamBot(string token)
+    public BlondeDreamBot(string token, UserStorage userStorage)
     {
         botClient = new TelegramBotClient(token);
+        UserStorage = userStorage;
     }
     public async Task Execute(CancellationToken cancellationToken)
     {
@@ -68,7 +69,7 @@ internal class BlondeDreamBot
         if (update.Message!.Type == MessageType.Text && update.Message.Text == "/start")
         {
             var chat = update.Message.Chat;
-            Users.Add(new Models.User
+            UserStorage.AddUser(new Models.User
             {
                 ChatId = chat.Id,
                 Name = chat.Username ?? chat.Title ?? $"{chat.FirstName} {chat.LastName}"

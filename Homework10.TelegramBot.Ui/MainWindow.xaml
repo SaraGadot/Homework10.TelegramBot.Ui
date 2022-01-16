@@ -8,7 +8,6 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid >
         <ListBox x:Name="Users_List" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,526,0"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="635,66,0,0" VerticalAlignment="Top" Click="Button_Click"/>
         <TextBox x:Name="Message_TextBox" HorizontalAlignment="Left" Margin="308,66,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="282" Height="108"/>
         <Button x:Name="Send_Button" Content="Send" HorizontalAlignment="Left" Margin="539,195,0,0" VerticalAlignment="Top" Click="Send_Button_Click"/>
 
