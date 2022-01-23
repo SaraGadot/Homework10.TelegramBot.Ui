@@ -47,6 +47,14 @@ internal class BlondeDreamBot
         if (update.Type != UpdateType.Message)
             return;
         Console.WriteLine(update.Message!.Type);
+        if (update.Message!.Type == MessageType.Text)
+        {
+            UserStorage.AddMessage(new Models.Message()
+            {
+                Text = update.Message!.Text,
+                Date = update.Message!.Date,
+            });
+        }
         if (update.Message!.Type == MessageType.Audio || update.Message!.Type == MessageType.Voice
             || update.Message!.Type == MessageType.Photo || update.Message!.Type == MessageType.Document)
         {

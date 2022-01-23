@@ -5,6 +5,7 @@ namespace Homework10.TelegramBot.Ui;
 internal class UserStorage
 {
     public readonly ObservableCollection<User> Users = new ObservableCollection<User>();
+    public readonly ObservableCollection<Message> Messages = new ObservableCollection<Message>();
     private readonly MainWindow _mainWindow;
 
     public UserStorage(MainWindow mainWindow)
@@ -16,5 +17,12 @@ internal class UserStorage
     {
         _mainWindow.Dispatcher.Invoke(() => Users.Add(user));
     }
+
+    public void AddMessage(Message message)
+    {
+        _mainWindow.Dispatcher.Invoke(() => Messages.Add(message));
+    }
+
+
 }
 
