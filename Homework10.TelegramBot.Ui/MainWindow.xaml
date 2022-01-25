@@ -5,12 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Homework10.TelegramBot.Ui"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="BlondeDreamBot" Height="450" Width="800">
     <Grid >
-        <ListBox x:Name="Users_List" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,526,0"/>
-        <TextBox x:Name="Message_TextBox" HorizontalAlignment="Left" Margin="308,66,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="282" Height="108"/>
-        <Button x:Name="Send_Button" Content="Send" HorizontalAlignment="Left" Margin="539,195,0,0" VerticalAlignment="Top" Click="Send_Button_Click"/>
-        <ListBox x:Name="Messages_ListBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="308,263,210,27"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="43" />
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="26"/>
+            <ColumnDefinition Width="121"/>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <ListBox Grid.Column="0" x:Name="Users_List" d:ItemsSource="{d:SampleData ItemCount=5}" Background="#FFFFCBDB" Grid.ColumnSpan="4" />
+        <GridSplitter Grid.Column="4" ShowsPreview="False" Width="3" HorizontalAlignment="Center" />
+        <DockPanel Grid.Column="5"   LastChildFill="True" Background="#FFFFCBDB"   >
+            <Button x:Name="Send_Button" DockPanel.Dock="Bottom" Content="Отправить" HorizontalAlignment="Right"  VerticalAlignment="Top" Click="Send_Button_Click" Padding="20,1,24,1"/>
+            <TextBox x:Name="Message_TextBox" DockPanel.Dock="Bottom"  TextWrapping="Wrap"  Height="108" Background="#FFF9B6CB"/>
+            <ListBox x:Name="Messages_ListBox" d:ItemsSource="{d:SampleData ItemCount=5}" Background="#FFFBD9E4" />
+        </DockPanel>
 
     </Grid>
 </Window>

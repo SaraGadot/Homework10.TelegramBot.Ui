@@ -47,6 +47,10 @@ namespace Homework10.TelegramBot.Ui
         private async void Send_Button_Click(object sender, RoutedEventArgs e)
         {
             var user = Users_List.SelectedItem as User;
+            if (user == null)
+            {
+                return;
+            }
             await blondeDreamBot.Send(user.ChatId, Message_TextBox.Text);
             Dispatcher.Invoke(() => Message_TextBox.Text = null);
 
