@@ -172,6 +172,7 @@ internal class BlondeDreamBot
                     chatId: chatId,
                     text: message
                     );
+        UserStorage.AddMessage(new Models.Message() { Text = message });
     }
 }
 
