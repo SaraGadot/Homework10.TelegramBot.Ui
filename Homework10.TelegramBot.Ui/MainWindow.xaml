@@ -20,7 +20,17 @@
         <DockPanel Grid.Column="5"   LastChildFill="True" Background="#FFFFCBDB"   >
             <Button x:Name="Send_Button" DockPanel.Dock="Bottom" Content="Отправить" HorizontalAlignment="Right"  VerticalAlignment="Top" Click="Send_Button_Click" Padding="20,1,24,1"/>
             <TextBox x:Name="Message_TextBox" DockPanel.Dock="Bottom"  TextWrapping="Wrap"  Height="108" Background="#FFF9B6CB"/>
-            <ListBox x:Name="Messages_ListBox" d:ItemsSource="{d:SampleData ItemCount=5}" Background="#FFFBD9E4" />
+            <ListBox x:Name="Messages_ListBox" d:ItemsSource="{d:SampleData ItemCount=5}" Background="#FFFBD9E4" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="5">
+
+                            <TextBlock FontSize="16" Text="{Binding Path=Text}" HorizontalAlignment="Center" />
+                            <TextBlock FontSize="16" Text="{Binding Path=Date}" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </DockPanel>
 
     </Grid>
