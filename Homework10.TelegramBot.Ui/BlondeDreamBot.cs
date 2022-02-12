@@ -49,10 +49,18 @@ internal class BlondeDreamBot
         Console.WriteLine(update.Message!.Type);
         if (update.Message!.Type == MessageType.Text)
         {
+            var chat = update.Message.Chat;
             UserStorage.AddMessage(new Models.Message()
             {
                 Text = update.Message!.Text,
                 Date = update.Message!.Date,
+                Direction = Models.MessageDirection.Receive,
+                From = new Models.User()
+                {
+                    ChatId = chat.Id,
+                    Name = chat.Username ?? chat.Title ?? $"{chat.FirstName} {chat.LastName}"
+                    
+                }
             });
         }
         if (update.Message!.Type == MessageType.Audio || update.Message!.Type == MessageType.Voice
@@ -172,7 +180,16 @@ internal class BlondeDreamBot
                     chatId: chatId,
                     text: message
                     );
-        UserStorage.AddMessage(new Models.Message() { Text = message });
+        UserStorage.AddMessage(new Models.Message() 
+            { 
+                Text = message,
+                Direction = Models.MessageDirection.Send,
+                From = new Models.User()
+                {
+                    Name = "BlondeDreamBot"
+                }
+            });
+
     }
 }
 

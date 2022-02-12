@@ -24,9 +24,9 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Margin="5">
-
+                            <TextBlock FontSize="16" Text="{Binding Path=From.Name}" HorizontalAlignment="Center" />
                             <TextBlock FontSize="16" Text="{Binding Path=Text}" HorizontalAlignment="Center" />
-                            <TextBlock FontSize="16" Text="{Binding Path=Date}" HorizontalAlignment="Center" />
+                            <TextBlock FontSize="7" Text="{Binding Path=Date}" HorizontalAlignment="Center" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
