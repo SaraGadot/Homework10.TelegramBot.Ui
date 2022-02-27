@@ -1,4 +1,5 @@
-﻿using Homework10.TelegramBot.Ui.Models;
+﻿using Homework10.TelegramBot.Ui.Interfaces;
+using Homework10.TelegramBot.Ui.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace Homework10.TelegramBot.Ui
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IMainWindow
     {
         BlondeDreamBot blondeDreamBot;
         CancellationTokenSource botCancellation = new CancellationTokenSource();

@@ -1,4 +1,5 @@
-﻿using Homework10.TelegramBot.Ui.Models;
+﻿using Homework10.TelegramBot.Ui.Interfaces;
+using Homework10.TelegramBot.Ui.Models;
 using System.Collections.ObjectModel;
 
 namespace Homework10.TelegramBot.Ui;
@@ -6,9 +7,9 @@ internal class UserStorage
 {
     public readonly ObservableCollection<User> Users = new ObservableCollection<User>();
     public readonly ObservableCollection<Message> Messages = new ObservableCollection<Message>();
-    private readonly MainWindow _mainWindow;
+    private readonly IMainWindow _mainWindow;
 
-    public UserStorage(MainWindow mainWindow)
+    public UserStorage(IMainWindow mainWindow)
     {
         _mainWindow = mainWindow;
     }
