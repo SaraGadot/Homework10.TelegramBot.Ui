@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using Homework10.TelegramBot.Ui.Interfaces;
+using System.IO;
 using Telegram.Bot;
 using Telegram.Bot.Exceptions;
 using Telegram.Bot.Extensions.Polling;
@@ -15,9 +16,9 @@ internal class BlondeDreamBot
 {
     TelegramBotClient botClient;
     FileStorage fileStorage = new FileStorage();
-    public readonly UserStorage UserStorage;
+    public readonly IBotStorage UserStorage;
 
-    public BlondeDreamBot(string token, UserStorage userStorage)
+    public BlondeDreamBot(string token, IBotStorage userStorage)
     {
         botClient = new TelegramBotClient(token);
         UserStorage = userStorage;
