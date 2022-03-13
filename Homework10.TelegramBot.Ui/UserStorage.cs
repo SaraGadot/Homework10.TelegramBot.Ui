@@ -16,7 +16,13 @@ internal class UserStorage: IBotStorage
 
     public void AddUser(User user)
     {
-        _mainWindow.Dispatcher.Invoke(() => Users.Add(user));
+        _mainWindow.Dispatcher.Invoke(() =>
+            {
+                if (!Users.Any(_user => _user.Name == user.Name))
+                {
+                    Users.Add(user);
+                }
+            });
     }
 
     public void AddMessage(Message message)
