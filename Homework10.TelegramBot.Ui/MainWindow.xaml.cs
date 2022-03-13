@@ -56,6 +56,11 @@ namespace Homework10.TelegramBot.Ui
             Dispatcher.Invoke(() => Message_TextBox.Text = null);
 
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
 //Что нужно сделать

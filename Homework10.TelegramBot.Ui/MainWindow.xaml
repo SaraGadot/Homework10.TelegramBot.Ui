@@ -23,9 +23,16 @@
         <ListBox Grid.Column="0" x:Name="Users_List" d:ItemsSource="{d:SampleData ItemCount=5}" Background="#FFFFCBDB" Grid.ColumnSpan="4" />
         <GridSplitter Grid.Column="4" ShowsPreview="False" Width="3" HorizontalAlignment="Center" />
         <DockPanel Grid.Column="5"   LastChildFill="True" Background="#FFFFCBDB"   >
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Меню" >
+                    <MenuItem Header="Сохранить" ></MenuItem>
+                    <MenuItem Header="Выйти из приложения" Click="MenuItem_Click"></MenuItem>
+                </MenuItem>
+                
+            </Menu>
             <Button x:Name="Send_Button" DockPanel.Dock="Bottom" Content="Отправить" HorizontalAlignment="Right"  VerticalAlignment="Top" Click="Send_Button_Click" Padding="20,1,24,1"/>
             <TextBox x:Name="Message_TextBox" DockPanel.Dock="Bottom"  TextWrapping="Wrap"  Height="108" Background="#FFF9B6CB"/>
-            <ListBox x:Name="Messages_ListBox" d:ItemsSource="{d:SampleData ItemCount=5}" Background="#FFFBD9E4" HorizontalContentAlignment="Stretch" >
+            <ListBox x:Name="Messages_ListBox" d:ItemsSource="{d:SampleData ItemCount=5}" Background="#FFFBD9E4" HorizontalContentAlignment="Stretch">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Margin="5" HorizontalAlignment="{Binding Path=Direction,Converter={StaticResource directionConverter}}">
@@ -37,6 +44,5 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </DockPanel>
-
     </Grid>
 </Window>
