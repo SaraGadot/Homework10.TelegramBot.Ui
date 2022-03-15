@@ -25,7 +25,7 @@
         <DockPanel Grid.Column="5"   LastChildFill="True" Background="#FFFFCBDB"   >
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="Меню" >
-                    <MenuItem Header="Сохранить" ></MenuItem>
+                    <MenuItem Header="Сохранить" Click="MenuItem_Click_1"></MenuItem>
                     <MenuItem Header="Выйти из приложения" Click="MenuItem_Click"></MenuItem>
                 </MenuItem>
                 

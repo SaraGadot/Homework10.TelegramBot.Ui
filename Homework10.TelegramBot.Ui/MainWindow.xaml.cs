@@ -22,6 +22,7 @@ namespace Homework10.TelegramBot.Ui
     /// </summary>
     public partial class MainWindow : Window, IMainWindow
     {
+        UserStorage userStorage;
         BlondeDreamBot blondeDreamBot;
         CancellationTokenSource botCancellation = new CancellationTokenSource();
         public MainWindow()
@@ -31,7 +32,7 @@ namespace Homework10.TelegramBot.Ui
            
             var token = System.IO.File.ReadAllText("token.txt");
 
-            var userStorage = new UserStorage(this);
+            userStorage = new UserStorage(this);
             blondeDreamBot = new BlondeDreamBot(token, userStorage);
             Users_List.ItemsSource = userStorage.Users;
             Messages_ListBox.ItemsSource = userStorage.Messages;
@@ -60,6 +61,11 @@ namespace Homework10.TelegramBot.Ui
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            userStorage.Save("Messages.json");
         }
     }
 }

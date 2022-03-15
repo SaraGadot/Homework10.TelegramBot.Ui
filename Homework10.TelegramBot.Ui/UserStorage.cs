@@ -1,6 +1,8 @@
 ﻿using Homework10.TelegramBot.Ui.Interfaces;
 using Homework10.TelegramBot.Ui.Models;
+using Newtonsoft.Json;
 using System.Collections.ObjectModel;
+using System.IO;
 
 namespace Homework10.TelegramBot.Ui;
 internal class UserStorage: IBotStorage
@@ -28,6 +30,12 @@ internal class UserStorage: IBotStorage
     public void AddMessage(Message message)
     {
         _mainWindow.Dispatcher.Invoke(() => Messages.Add(message));
+    }
+
+    public void Save(string fileName)
+    {
+        var json = JsonConvert.SerializeObject(this, Formatting.Indented);
+        File.WriteAllText(fileName, json);
     }
 
 
